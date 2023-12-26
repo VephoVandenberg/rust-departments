@@ -1,4 +1,4 @@
-pub mod Company {
+pub mod company {
     use std::collections::HashMap;
 
     pub const ENGINEERING: &str = "Engineering";
@@ -36,12 +36,10 @@ pub mod Company {
             }
         }
 
-        pub fn print_department(&self, department: Department) {
+        pub fn print_department(&mut self, department: Department) {
             if self.departments.contains_key(&department){
-                let mut dep = &self.departments.get_mut(&department).unwrap();
-                dep.sort();
-                
-                for worker in dep {
+                self.departments.get_mut(&department).unwrap().sort();
+                for worker in self.departments.get_mut(&department).unwrap() {
                     println!("{worker}");
                 }
         
