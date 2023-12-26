@@ -2,7 +2,7 @@ use std::{io, collections::HashMap};
 
 mod company;
 
-use company::CompanyAndDepartments::*;
+use company::Company::*;
 
 fn main() {
 
