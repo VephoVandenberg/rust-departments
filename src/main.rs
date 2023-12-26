@@ -20,6 +20,7 @@ fn main() {
         let tokens: Vec<&str> = input.trim().split_whitespace().collect();
         match tokens.as_slice() {
             ["Exit"] => break,
+            ["All"] => print_all(&deps),
             ["Add", worker, "to", department] => add_person(department.to_string(), worker.to_string(), &mut deps),
             ["Print", department] => print_department(department.to_string(), &mut deps),
             _ => println!("Your input format is probably wrong..."),
@@ -50,4 +51,15 @@ fn add_person(
         if deps.contains_key(&department) {
             deps.get_mut(&department).unwrap().push(name);
         }
+}
+
+fn print_all(deps: &HashMap<String, Vec<String>>) {
+    for (name, dep) in deps.iter() {
+        println!("-------------------");
+        println!("{name}");
+        println!("-------------------");
+        for worker in dep {
+            println!("{worker}");
+        }
+    }
 }
